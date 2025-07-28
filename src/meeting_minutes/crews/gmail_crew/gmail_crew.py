@@ -2,6 +2,7 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List
+from .tools.gmail_tool import GmailTool
 
 
 @CrewBase
@@ -15,7 +16,8 @@ class GmailCrew():
     def gmail_draft_agent(self) -> Agent:
         return Agent(
             config=self.agents_config['gmail_draft_agent'], 
-            verbose=True
+            verbose=True,
+            tools=[GmailTool()]
         )
 
     @task

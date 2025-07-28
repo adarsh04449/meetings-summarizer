@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from pydub import AudioSegment
 from pydub.utils import make_chunks
 from pathlib import Path
+from crews.gmail_crew.gmail_crew import GmailCrew
 
 
 load_dotenv()
@@ -61,7 +62,16 @@ class MeetingMinutesFlow(Flow[MeetingMinutesState]):
 
     @listen(generate_meeting_minutes)
     def create_draft_meeting_minutes(self):
-        print("Creating meeting draft")
+        print("Creating Draft Meeting Minutes")
+
+        crew = GmailCrew()
+
+        inputs = {
+            "body": self.state.meeting_minutes
+        }
+
+        draft_crew = crew.crew().kickoff(inputs)
+        print(f"Draft Crew: {draft_crew}")
 
 def kickoff():
     meeting_minutes_flow = MeetingMinutesFlow()
