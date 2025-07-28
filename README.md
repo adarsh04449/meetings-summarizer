@@ -1,6 +1,6 @@
 # 📝 Meeting Summarizer Agent
 
-An **AI-powered meeting assistant** that transcribes audio, summarizes key points, and sends meeting minutes via email — all powered by [CrewAI](https://github.com/joaomdmoura/crewai).
+An **AI-powered meeting assistant** that transcribes audio, summarizes key points, and sends meeting minutes via email
 
 ---
 
